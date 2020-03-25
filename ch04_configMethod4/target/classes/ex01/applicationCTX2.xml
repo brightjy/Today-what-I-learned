@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="family" class="com.tj.ex01xml.Family" c:fatherName="홍길동" c:motherName="길동뷘" p:daughterName="홍순이" p:sonName="홍돌이"/>
+	<bean id="student2" class="com.tj.ex01xml.Student" p:height="188" p:weight="80">
+		<constructor-arg value="호일천"/>
+		<constructor-arg value="28"/>
+		<constructor-arg>
+			<list>
+				<value>맛집탐방</value>
+				<value>낮잠자기</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+</beans>
