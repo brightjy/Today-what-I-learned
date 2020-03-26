@@ -7,10 +7,12 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>src/main/resources/ex01/applicationCTX1.xml</config>
-		<config>src/main/resources/ex01/applicationCTX2.xml</config>
-		<config>src/main/resources/ex03/applicationCTX.xml</config>
-		<config>src/main/resources/ex05/applicationCTX.xml</config>
+		<config>src/main/resources/applicationCTX01.xml</config>
+		<config>src/main/resources/applicationCTX02.xml</config>
+		<config>src/main/resources/applicationCTX_run.xml</config>
+		<config>src/main/resources/applicationCTX_dev.xml</config>
+		<config>src/main/resources/homework/dev.xml</config>
+		<config>src/main/resources/homework/run.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
