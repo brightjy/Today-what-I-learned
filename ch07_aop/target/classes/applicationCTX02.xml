@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+	<aop:aspectj-autoproxy/>
+	<bean id="proxyClass02" class="com.tj.ex02.ProxyClass02"/>
+
+	<bean id="student02" class="com.tj.ex02.Student02">
+		<property name="name" value="홍길동"/>
+		<property name="age" value="20"/>
+		<property name="gradeNum" value="4"/>
+		<property name="classNum" value="3"/>
+	</bean>
+	<bean id="worker02" class="com.tj.ex02.Worker02">
+		<property name="name" value="김일꾼"/>
+		<property name="age" value="40"/>
+		<property name="job" value="가수"/>
+	</bean>
+
+</beans>
