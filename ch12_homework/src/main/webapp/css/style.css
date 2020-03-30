@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+*{
+	margin: 0 auto;
+}
+
+h3{
+	color:red;
+	text-align:right;
+}
+
+.colspan{
+	text-align:center;
+}
