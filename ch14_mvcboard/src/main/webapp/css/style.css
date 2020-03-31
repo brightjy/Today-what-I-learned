@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color: #dafada;
+	font-size: 12px;
+
+}
+table {border: 2px solid black; width:50%; margin: 10px auto;}
+table th { background-color: black; color:white; }
+table tr { background-color: white; }
+/* table td:hover { background-color: grey;
+	cursor: pointer;
+	color:white;
+}
+
+table td a:hover { background-color: grey;
+	cursor: pointer;
+	color:white;
+} */
+.writebtn:hover { 
+	background-color: black;
+	color:white;
+	cursor: pointer;	
+}
+.writebtn a:hover { 
+	background-color: black;
+	color:white;
+	cursor: pointer;	
+	font-weight:bold;
+	display:block;
+}
+th, td {text-align: center; padding:5px; }
+caption {font-size: 25px; padding:10px; font-weight:bold;}
+h2,b{text-align: center; color:red;}
+a { text-decoration: none; color:black}
+a:hover{cursor:pointer;}
+.left{text-align: left;}
+.paging {text-align: center;}
+input{width:97%;}
+textarea{width:97%; height:300px;}
+.btn, button{width:100px; border:0; outline:0; padding:5px;}
+.btn:hover, button:hover{cursor:pointer; border:1px solid black; box-sizing: border-box;	}
