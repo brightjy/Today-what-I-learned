@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -44,11 +45,45 @@ public class BController {
 		return "forward:list.do"; // BWriteService에서 처리해서 model에 담은 것을 유지해야 하니까 redirect X
 	}
 	@RequestMapping(value="content_view", method=RequestMethod.GET)
-	public String content_view(String bId, String pageNum, Model model) {
+	public String content_view(int bId, Model model) {
 		model.addAttribute("bId", bId);
-		model.addAttribute("pageNum", pageNum);
 		service = new BContentService();
 		service.execute(model);
 		return "mvcboard/content_view";
+	}
+	@RequestMapping(value="modify_view", method=RequestMethod.GET)
+	public String modify_view(int bId, Model model) {
+		model.addAttribute("bId", bId);
+		service = new BModifyViewService();
+		service.execute(model);
+		return "mvcboard/modify_view";
+	}
+	@RequestMapping(value="modify", method=RequestMethod.POST)
+	public String modify(@ModelAttribute("bDto") Board board, HttpServletRequest request, Model model) { // bDto로 넘기고 싶은 경우
+		model.addAttribute("request", request);
+		service = new BModifyService();
+		service.execute(model);
+		return "forward:list.do";
+	}
+	@RequestMapping(value="reply_view", method=RequestMethod.GET)
+	public String reply_view(int bId, Model model ) {
+		model.addAttribute("bId", bId);
+		service = new BReplyViewService();
+		service.execute(model);
+		return "mvcboard/reply_view";
+	}
+	@RequestMapping(value="reply", method=RequestMethod.POST)
+	public String reply(Board board, HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		service = new BReplyService();
+		service.execute(model);
+		return "forward:list.do";
+	}
+	@RequestMapping(value="delete", method=RequestMethod.GET)
+	public String delete(int bId, Model model) {
+		model.addAttribute("bId", bId);
+		service = new BDeleteService();
+		service.execute(model);
+		return "forward:list.do";
 	}
 }
