@@ -19,6 +19,7 @@ public class FileUploadService {
 		String backupPath = "D:/mega_IT/source/9_Spring/ch16_fileup/src/main/webapp/upload/";
 		String[] fileNames = new String[3];
 		int i = 0;
+		
 		Iterator<String> params = mRequest.getFileNames(); // file1, file2, file3를 읽어온다.
 		while(params.hasNext()) { // params.hasNext()있으면 진행한다.
 			String param = params.next();
