@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+body {	text-align: center;	}
+table { border: 1px solid pink; width: 100%; }
+tr { height: 30px; background-color: yellow; }
+tr:hover{ background-color: pink;}
+th {	background: #b9b973; width:12%;	}
+td {	background: #f9f3b3; width:12%;	}
+caption {font-size: 2em; }
+.paging{ text-align: center;}
+.btn{ padding: 5px;}
