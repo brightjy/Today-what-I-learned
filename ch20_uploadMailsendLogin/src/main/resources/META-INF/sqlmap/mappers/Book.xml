@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Book">
+	<resultMap type="Book" id="BookResult"> <!-- 이게 무슨  의미인지 모르겠네? bookResult -->
+		<result property="bNum" column="bNum"/>
+		<result property="bTitle" column="bTitle"/>
+		<result property="bWriter" column="bWriter"/>
+		<result property="bRdate" column="bRdate"/>
+		<result property="bImg1" column="bImg1"/>
+		<result property="bImg2" column="bImg2"/>
+		<result property="bInfo" column="bInfo"/>
+	</resultMap>
+	<select id="mainList" resultMap="BookResult">
+		SELECT*FROM BOOK ORDER BY bRDATE DESC
+	</select>
+	<select id="bookList" parameterType="Book" resultMap="BookResult">
+		SELECT*FROM(SELECT ROWNUM RN, A.* FROM(SELECT*FROM BOOK ORDER BY bTITLE)A) WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	<select id="cntBook" resultType="int">
+		SELECT COUNT(*) FROM BOOK
+	</select>
+ 	<select id="getBook" parameterType="int" resultType="Book">
+ 		SELECT*FROM BOOK WHERE bNUM=#{bNum}
+ 	</select>
+ 	<insert id="registerBook" parameterType="Book">
+ 		<if test="bImg1!='' and bImg2!=''">
+	 		INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG1, bIMG2, bINFO) VALUES 
+			    (BOOK_SQ.nextval, #{bTitle}, #{bWriter}, SYSDATE, #{bImg1}, #{bImg2}, #{bInfo})
+		</if> 
+		<if test="bImg1!='' and bImg2==''">
+	 		INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG1, bINFO) VALUES 
+			    (BOOK_SQ.nextval, #{bTitle}, #{bWriter}, SYSDATE, #{bImg1}, #{bInfo})
+		</if>
+		<if test="bImg1=='' and bImg2!=''">
+	 		INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG2, bINFO) VALUES 
+			    (BOOK_SQ.nextval, #{bTitle}, #{bWriter}, SYSDATE, #{bImg2}, #{bInfo})
+		</if>
+		<if test="bImg1=='' and bImg2==''">
+	 		INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bINFO) VALUES 
+			    (BOOK_SQ.nextval, #{bTitle}, #{bWriter}, SYSDATE, #{bInfo})
+		</if>
+	</insert>
+ 	<update id="modifyBook" parameterType="Book">
+ 		<if test="bImg1!='' and bImg2!=''">
+	 		UPDATE BOOK SET
+			    bTITLE = #{bTitle},
+			    bWRITER = #{bWriter},
+			    bRDATE = SYSDATE,
+			    bIMG1 = #{bImg1},
+			    bIMG2 = #{bImg2},
+			    bINFO = #{bInfo}
+			    WHERE bNUM=#{bNum}
+		</if>
+ 		<if test="bImg1!='' and bImg2==''">
+	 		UPDATE BOOK SET
+			    bTITLE = #{bTitle},
+			    bWRITER = #{bWriter},
+			    bRDATE = SYSDATE,
+			    bIMG1 = #{bImg1},
+			    bINFO = #{bInfo}
+			    WHERE bNUM=#{bNum}
+		</if>
+ 		<if test="bImg1=='' and bImg2!=''">
+	 		UPDATE BOOK SET
+			    bTITLE = #{bTitle},
+			    bWRITER = #{bWriter},
+			    bRDATE = SYSDATE,
+			    bIMG2 = #{bImg2},
+			    bINFO = #{bInfo}
+			    WHERE bNUM=#{bNum}
+		</if>
+ 		<if test="bImg1=='' and bImg2==''">
+	 		UPDATE BOOK SET
+			    bTITLE = #{bTitle},
+			    bWRITER = #{bWriter},
+			    bRDATE = SYSDATE
+			    WHERE bNUM=#{bNum}
+		</if>
+ 	</update>
+ 	<delete id="deleteBook" parameterType="int">
+ 		DELETE BOOK WHERE bNUM=#{bNum}
+ 	</delete>
+</mapper>

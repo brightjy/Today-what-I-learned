@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ 
+ <configuration>
+	<!-- Dto alias 설정 -->
+ 	<typeAliases>
+		<typeAlias type="com.tj.ch20.dto.Book" alias="Book"/>
+		<typeAlias type="com.tj.ch20.dto.Member" alias="Member"/>
+	</typeAliases>
+	<!-- Mappers 설정 -->
+	<mappers>
+		<mapper resource="META-INF/sqlmap/mappers/Book.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/Member.xml"/>
+	</mappers>
+ </configuration>
