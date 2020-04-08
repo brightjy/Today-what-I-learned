@@ -16,10 +16,12 @@
 		SELECT*FROM BOOK ORDER BY bRDATE DESC
 	</select>
 	<select id="bookList" parameterType="Book" resultMap="BookResult">
-		SELECT*FROM(SELECT ROWNUM RN, A.* FROM(SELECT*FROM BOOK ORDER BY bTITLE)A) WHERE RN BETWEEN #{startRow} AND #{endRow}
+		SELECT*FROM(SELECT ROWNUM RN, A.* FROM
+		    (SELECT*FROM BOOK WHERE bTITLE LIKE '%'||#{searchText, jdbcType = VARCHAR}||'%' OR bWRITER LIKE '%'||#{searchText, jdbcType = VARCHAR}||'%' ORDER BY bTITLE)A) 
+		        WHERE RN BETWEEN #{startRow} AND #{endRow}
 	</select>
-	<select id="cntBook" resultType="int">
-		SELECT COUNT(*) FROM BOOK
+	<select id="cntBook" parameterType="Book" resultType="int">
+		SELECT COUNT(*) FROM BOOK WHERE bTITLE LIKE '%'||#{searchText, jdbcType = VARCHAR}||'%' OR bWRITER LIKE '%'||#{searchText, jdbcType = VARCHAR}||'%'
 	</select>
  	<select id="getBook" parameterType="int" resultType="Book">
  		SELECT*FROM BOOK WHERE bNUM=#{bNum}

@@ -12,6 +12,16 @@ public class Book {
 	private String bInfo;
 	private int startRow;
 	private int endRow;
+	private String searchText;
+
+	
+	
+	public String getSearchText() {
+		return searchText;
+	}
+	public void setSearchText(String searchText) {
+		this.searchText = searchText;
+	}
 	public int getbNum() {
 		return bNum;
 	}
@@ -70,8 +80,9 @@ public class Book {
 	public String toString() {
 		return "Book [bNum=" + bNum + ", bTitle=" + bTitle + ", bWriter=" + bWriter + ", bRdate=" + bRdate + ", bImg1="
 				+ bImg1 + ", bImg2=" + bImg2 + ", bInfo=" + bInfo + ", startRow=" + startRow + ", endRow=" + endRow
-				+ "]";
+				+ ", searchText=" + searchText + "]";
 	}
+	
 	
 	
 }

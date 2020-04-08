@@ -13,13 +13,21 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 $(document).ready(function(){
-	
+
 });
 </script>
 </head>
 <body>
 <jsp:include page="../main/header.jsp"/>
 	<div id="content">
+		<div id="search">
+			<form action="">
+				<input type="hidden" name="method" value="list">
+				<input type="hidden" name="pageNum" value="${param.pageNum }">
+				<input type="text" name="searchText" value="${book.searchText }">
+				<input type="submit" value="검색">			
+			</form>
+		</div>
 		<table>
 			<caption>전체 도서 보기(책 이름 순)</caption>
 			<tr>
@@ -38,7 +46,7 @@ $(document).ready(function(){
 			<br>
 			<br>
 		<c:if test="${paging.startPage>paging.blockSize }">
-			[ <a href="${conPath }/book.do?method=list&pageNum=${paging.startPage-1}">이전</a> ]
+			[ <a href="${conPath }/book.do?method=list&pageNum=${paging.startPage-1}&searchText=${book.searchText}">이전</a> ]
 		</c:if>
 		<c:forEach var="i" begin="${paging.startPage }"
 			end="${paging.endPage }">
@@ -46,11 +54,11 @@ $(document).ready(function(){
 				[ <b> ${i }</b> ]
 			</c:if>
 			<c:if test="${paging.currentPage!=i }">
-				[ <a href="${conPath }/book.do?method=list&pageNum=${i}"> ${i }</a> ]
+				[ <a href="${conPath }/book.do?method=list&pageNum=${i}&searchText=${book.searchText}"> ${i }</a> ]
 			</c:if>
 		</c:forEach>
 		<c:if test="${paging.endPage<paging.pageCnt }">
-			[ <a href="${conPath }/book.do?method=list&pageNum=${paging.endPage+1}">다음</a> ]
+			[ <a href="${conPath }/book.do?method=list&pageNum=${paging.endPage+1}&searchText=${book.searchText}">다음</a> ]
 		</c:if>
 		</div>
 	</div>

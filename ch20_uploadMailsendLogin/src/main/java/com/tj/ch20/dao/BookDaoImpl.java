@@ -24,8 +24,8 @@ public class BookDaoImpl implements BookDao {
 	}
 
 	@Override
-	public int cntBook() {
-		return sessionTemplate.selectOne("cntBook");
+	public int cntBook(Book book) {
+		return sessionTemplate.selectOne("cntBook", book);
 	}
 
 	@Override
@@ -47,5 +47,6 @@ public class BookDaoImpl implements BookDao {
 	public int deleteBook(int bNum) {
 		return sessionTemplate.delete("deletebook", bNum);
 	}
+
 
 }

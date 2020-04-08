@@ -25,11 +25,12 @@ public class BookController {
 	}
 	
 	@RequestMapping(params="method=list")
-	public String list(String pageNum, Model model) {
-		Paging paging = new Paging(service.cntBook(), pageNum, 3, 5);
-		Book book = new Book();
+	public String list(String pageNum, Book book, Model model) {
+		Paging paging = new Paging(service.cntBook(book), pageNum, 3, 5);
+
 		book.setStartRow(paging.getStartRow());
 		book.setEndRow(paging.getEndRow());
+
 		model.addAttribute("bookList", service.bookList(book));
 		model.addAttribute("paging", paging);
 		return "book/list";

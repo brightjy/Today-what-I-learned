@@ -7,7 +7,7 @@ import com.tj.ch20.dto.Book;
 public interface BookDao {
 	public List<Book> mainList();
 	public List<Book> bookList(Book book);
-	public int cntBook();
+	public int cntBook(Book book);
 	public Book getBook(int bNum);
 	public int registerBook(Book book);
 	public int modifyBook(Book book);

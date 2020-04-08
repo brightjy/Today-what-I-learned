@@ -35,8 +35,8 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public int cntBook() {
-		return bookDao.cntBook();
+	public int cntBook(Book book) {
+		return bookDao.cntBook(book);
 	}
 
 	@Override
