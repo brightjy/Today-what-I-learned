@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+	<!-- Dto alias 설정 -->
+	<typeAliases>
+		<typeAlias type="com.tj.pj.dto.Host" alias="Host"/>
+		<typeAlias type="com.tj.pj.dto.Host" alias="LikeHost"/>
+	</typeAliases>
+	<!-- Mappers 설정 -->
+	<mappers>
+		<mapper resource="META-INF/sqlmap/mapper/Host.xml"/>
+		<mapper resource="META-INF/sqlmap/mapper/LikeHost.xml"/>
+	</mappers>
+</configuration>
